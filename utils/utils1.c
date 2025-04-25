@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoshahi <enoshahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 11:41:18 by enoshahi          #+#    #+#             */
-/*   Updated: 2024/08/11 13:35:35 by enoshahi         ###   ########.fr       */
+/*   Created: 2025/04/25 16:12:28 by enoshahi          #+#    #+#             */
+/*   Updated: 2025/04/25 18:37:54 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-static int	check(unsigned int nb, int mult)
+int	check(unsigned int nb, int mult)
 {
 	if (nb > 2147483647 && mult == 1)
 		return (-1);
@@ -22,7 +22,7 @@ static int	check(unsigned int nb, int mult)
 	return (nb);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int	i;
 	int	res;
@@ -44,4 +44,31 @@ int	ft_atoi(const char *str)
 		return (check(res, sign));
 	}
 	return (0);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }

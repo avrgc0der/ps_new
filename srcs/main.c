@@ -6,20 +6,26 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 01:04:16 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 02:22:29 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:42:14 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void init_stack(t_stack **stack, int ac, char **av)
+void init_stack(t_list **stack, int ac, char **av)
 {
 	char **args;
-	t_stack *node;
+	t_list *node;
 	int i;
 
 	i = 0;
-	set_args(ac, av, args, i);
+	if (ac == 2)
+	args = ft_split(av[1], ' ');
+	else
+	{
+		i = 1;
+		args = av + 1;
+	}
 	while (args[i])
 	{
 		node = ft_lstnew(ft_atoi(args[i]));
@@ -28,22 +34,22 @@ void init_stack(t_stack **stack, int ac, char **av)
 	}
 	stack_index(stack);
 	if (ac == 2)
-	ft_free(args);
+	ft_freearray(args);
 }
 
 int main(int ac, char **av)
 {
-	t_stack **a;
-	t_stack **b;
-	
+	t_list **a;
+	t_list **b;
+
 	if (ac < 2)
 	{
 		err_msg("ERROR: try ./push_swap [input]");
 		return (-1);
 	}
 		args_check(ac, av);
-	a = (t_stack **)malloc(sizeof(t_stack));
-	b = (t_stack **)malloc(sizeof(t_stack));
+	a = (t_list **)malloc(sizeof(t_list));
+	b = (t_list **)malloc(sizeof(t_list));
 	*a = NULL;
 	*b = NULL;
 	init_stack(a, ac, av);

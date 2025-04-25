@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:15:48 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 02:18:18 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:51:19 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 # include <unistd.h>
 
 typedef unsigned char	t_usc;
+
 typedef struct s_list
 {
+	int				value;
+	int				index;
 	void			*content;
 	struct s_list	*next;
 }					t_list;
 
-int		ft_atoi(const char *str);
+long		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalpha(int c);

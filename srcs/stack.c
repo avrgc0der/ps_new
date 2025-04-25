@@ -6,15 +6,15 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:22:38 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 02:22:40 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:22:52 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void stack_index(t_stack **stack)
+void stack_index(t_list **stack)
 {
-	t_stack *head;
+	t_list *head;
 	int i;
 	
 	i = 0;
@@ -27,10 +27,10 @@ void stack_index(t_stack **stack)
 	}
 }
 
-t_stack *stack_min(t_stack **stack)
+t_list *stack_min(t_list **stack)
 {
-	t_stack *head;
-	t_stack *min;
+	t_list *head;
+	t_list *min;
 	int flag;
 	
 	min = NULL;

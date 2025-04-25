@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 00:34:29 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/02/24 14:24:00 by enoshahi         ###   ########.fr       */
+/*   Created: 2025/04/25 16:14:38 by enoshahi          #+#    #+#             */
+/*   Updated: 2025/04/25 18:37:39 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-static int	ft_countwords(char const *s, char dl)
+int	ft_countwords(char const *s, char dl)
 {
 	int	words;
 	int	x;
@@ -33,7 +33,7 @@ static int	ft_countwords(char const *s, char dl)
 	return (words);
 }
 
-static int	ft_wordlen(char *str, char c)
+int	ft_wordlen(char *str, char c)
 {
 	int	i;
 
@@ -45,20 +45,7 @@ static int	ft_wordlen(char *str, char c)
 	return (i);
 }
 
-static void	ft_free(char **s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		free (s[i]);
-		i++;
-	}
-	free (s);
-}
-
-static char	**ft_splitalloc(char **str, char *s, char c)
+char	**ft_splitalloc(char **str, char *s, char c)
 {
 	size_t	i;
 	size_t	len;
@@ -72,7 +59,7 @@ static char	**ft_splitalloc(char **str, char *s, char c)
 			str[i] = (char *)malloc((len + 1) * sizeof(char));
 			if (!str[i])
 			{
-				ft_free(str);
+				ft_freearray(str);
 				return (NULL);
 			}
 			ft_strlcpy(str[i], s, len + 1);

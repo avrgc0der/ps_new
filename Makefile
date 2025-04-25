@@ -1,14 +1,17 @@
-NAME = push_swap
+NAME    = push_swap
 
-SRCS = main.c
+CFLAGS  = -Wall -Werror -Wextra
 
-OBJS = ${SRCS: .c=.o}
+RM      = rm -f
 
-CC = cc
+SRCS    = srcs/main.c srcs/parsing.c srcs/stack.c srcs/utils.c utils/utils1.c utils/utils2.c utils/utils3.c
 
-CFLAGS = -Wall -Wextra -Werror -I./ -fsanitize=address -g3
+OBJ     = $(SRCS:.c=.o)
 
-all : ${NAME} build
+
+FT_PRINTF	 = ft_printf/libftprintf.a
+
+all: $(NAME) build
 
 build :
 
@@ -25,16 +28,24 @@ build :
 
 MAGENTA=\033[35m
 
+$(FT_PRINTF):
+	$(MAKE)	-C ft_printf
 
-${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+$(NAME): $(OBJ) $(FT_PRINTF)
+	$(CC) $(CFLAGS) $(OBJ) -o $@ $(FT_PRINTF)
 
-clean :
-	rm -f ${OBJS}
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
-fclean : clean
-	rm -f ${NAME} 
+clean:
+	$(RM) $(OBJ)
+	$(MAKE) -C ft_printf clean
 
-re : fclean all
+fclean: clean
+	$(RM) $(OBJ)
+	$(MAKE) -C ft_printf fclean
+	$(RM) $(NAME)
 
-.PHONY : all clean fclean re
+re: fclean all
+
+.PHONY: all clean fclean re 

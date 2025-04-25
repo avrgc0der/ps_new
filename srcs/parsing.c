@@ -6,23 +6,11 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 02:21:55 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:44:14 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void set_args(int ac, char **av, char **args, int i)
-{
-	i = 0;
-	if (ac == 2)
-	args = ft_split(av[1], ' ');
-	else
-	{
-		i = 1;
-		args = av;
-	}
-}
 
 int isNum(char *nb)
 {
@@ -40,13 +28,12 @@ int isNum(char *nb)
 	return (1);
 }
 
-
 int isDup(int tmp, char **av, int i)
 {
 	i++;
 	while (av[i])
 	{
-		if (ft_atoi(av[i] == tmp))
+		if (ft_atoi(av[i])  == tmp)
 		return (1);
 		i++;
 	}
@@ -60,10 +47,17 @@ void args_check(int ac, char **av)
 	char **args;
 	
 	i = 0;
-	set_args(ac, av, args, i);
+	if (ac == 2)
+		args = ft_split(av[1], ' ');
+	
+	else
+	{
+		i = 1;
+		args = av + 1;
+	}
 	while (args[i])
 	{
-		tmp = ft_atoi(args[i]); 
+		tmp = ft_atoi(args[i]);
 		if (!isNum(args[i]))
 		err_msg("ERROR: arguments must be numerical.");
 		if (isDup(tmp, args, i))
@@ -72,4 +66,6 @@ void args_check(int ac, char **av)
 		err_msg("ERROR: invalid integer range.");
 		i++;
 	}
+	if (ac == 2)
+	ft_freearray(args);
 }
