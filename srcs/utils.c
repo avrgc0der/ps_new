@@ -12,9 +12,9 @@
 
 #include "../push_swap.h"
 
-void	err_msg(char *msg)
+void	err_msg()
 {
-	ft_putendl_fd(msg, 2);
+	ft_putendl_fd(ERROR, 2);
 	exit(EF);
 }
 
@@ -24,7 +24,7 @@ void ft_freearray(char **str)
 	
 	i = 0;
 	while (str[i])
-	i++;
+		i++;
 	while (i >= 0)
-	free(str[i--]);
+		free(str[i--]);
 }

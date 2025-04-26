@@ -16,11 +16,16 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+
+# define ERROR "Error"
 
 # define EF EXIT_FAILURE
 # define ES EXIT_SUCCESS
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
+
+// included limits.h instead
+// # define INT_MIN -2147483648
+// # define INT_MAX 2147483647
 
 
 // * list struct
@@ -28,9 +33,18 @@ typedef struct s_list
 {
 	int				value;
 	int				index;
-	void			*content;
+	// not needed
+	// void			*content;
 	struct s_list	*next;
 }					t_list;
+
+
+typedef struct s_parsing
+{
+	char	*joined;
+	char	**args;
+	int		counter;
+}				t_parsing;
 
 
 // ! -----------------------------------------`
@@ -41,7 +55,7 @@ typedef struct s_list
 void	init_stack(t_list **stack, int ac, char **av);
 
 // * parsing functions
-void	args_check(int ac, char **av);
+void	args_check(int ac, char **av, t_parsing *args);
 
 // * cleanup functions
 void	ft_freearray(char **str);
@@ -53,7 +67,7 @@ void	stack_index(t_list **stack);
 t_list	*stack_min(t_list **stack);
 
 // * utils
-void	err_msg(char *msg);
+void	err_msg();
 int		isNum(char *nb);
 int		isDup(int tmp, char **av, int i);
 
@@ -65,11 +79,10 @@ void		ft_putendl_fd(char *s, int fd);
 size_t		ft_strlen(const char *s);
 int			ft_isdigit(int c);
 long		ft_atoi(const char *str);
-int	check(unsigned int nb, int mult);
+int			check(unsigned int nb, int mult);
 char		**ft_split(char const *s, char c);
-char	**ft_splitalloc(char **str, char *s, char c);
-int	ft_wordlen(char *str, char c);
-int	ft_countwords(char const *s, char dl);
-
+char		**ft_splitalloc(char **str, char *s, char c);
+int			ft_wordlen(char *str, char c);
+int			ft_countwords(char const *s, char dl);
 
 #endif

@@ -8,9 +8,6 @@ SRCS    = srcs/main.c srcs/parsing.c srcs/stack.c srcs/utils.c utils/utils1.c ut
 
 OBJ     = $(SRCS:.c=.o)
 
-
-FT_PRINTF	 = ft_printf/libftprintf.a
-
 all: $(NAME) build
 
 build :
@@ -28,22 +25,18 @@ build :
 
 MAGENTA=\033[35m
 
-$(FT_PRINTF):
-	$(MAKE)	-C ft_printf
 
-$(NAME): $(OBJ) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJ) -o $@ $(FT_PRINTF)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	$(RM) $(OBJ)
-	$(MAKE) -C ft_printf clean
 
 fclean: clean
 	$(RM) $(OBJ)
-	$(MAKE) -C ft_printf fclean
 	$(RM) $(NAME)
 
 re: fclean all

@@ -39,18 +39,31 @@ void init_stack(t_list **stack, int ac, char **av)
 
 int main(int ac, char **av)
 {
-	t_list **a;
-	t_list **b;
+	t_parsing	args;
+	t_list		*a;
+	t_list		*b;
+	(void)a;
+	(void)b;
+	// t_list **a;
+	// t_list **b;
 
 	if (ac < 2)
 	{
-		err_msg("ERROR: try ./push_swap [input]");
-		return (-1);
+		err_msg();
+		// err_msg function has an "exit"
+		// return (-1);
 	}
-		args_check(ac, av);
-	a = (t_list **)malloc(sizeof(t_list));
-	b = (t_list **)malloc(sizeof(t_list));
-	*a = NULL;
-	*b = NULL;
-	init_stack(a, ac, av);
+	
+	args_check(ac, av, &args);
+
+	// make it to be one pointer
+	// a = (t_list **)malloc(sizeof(t_list));
+	// b = (t_list **)malloc(sizeof(t_list));
+	// a = (t_list *)malloc(sizeof(t_list));
+	// b = (t_list *)malloc(sizeof(t_list));
+	// *a = NULL;
+	// *b = NULL;
+	a = NULL;
+	b = NULL;
+	// init_stack(a, ac, av);
 }

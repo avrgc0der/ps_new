@@ -18,8 +18,7 @@ void stack_index(t_list **stack)
 	int i;
 	
 	i = 0;
-	head = stack_min(stack);
-	
+	head = stack_min(stack);	
 	while (head)
 	{
 		head->index = i++;
@@ -29,9 +28,9 @@ void stack_index(t_list **stack)
 
 t_list *stack_min(t_list **stack)
 {
-	t_list *head;
-	t_list *min;
-	int flag;
+	t_list	*head;
+	t_list	*min;
+	int		flag;
 	
 	min = NULL;
 	flag = 0;
