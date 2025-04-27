@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:22:38 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 00:14:25 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:29:40 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@
 // 	else
 // 		radix_sort(a, b);
 // }
+
+int stack_sorted(t_list *stack)
+{
+	t_list *head;
+
+	head = stack;
+	while (head && head->next)
+	{
+		if (head->value > head->next->value)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
 
 void stack_index(t_list **stack)
 {

@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:08:46 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 00:16:36 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 01:23:29 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_list
 
 typedef struct s_parsing
 {
-	char	*joined; // * after strjoin
-	char	**args; // * all of the args splitted
-	int		counter; // * counter of the elements in the string
+	char		*joined; // * after strjoin
+	char		**args; // * all of the args splitted
+	int			counter; // * counter of the elements in the string
 }				t_parsing;
 
 
@@ -59,24 +59,42 @@ void	ft_freearray(char **str);
 void	stack_index(t_list **stack);
 t_list	*stack_min(t_list **stack);
 void	sort_stack(t_list *a, t_list *b);
+int		stack_sorted(t_list *stack);
+
+// * move functions
+int		swap(t_list *stack);
+int		sa(t_list *a);
+int		sb(t_list *b);
+int		ss(t_list *a, t_list *b);
+int		rotate(t_list *stack);
+int		ra(t_list *a);
+int		rb(t_list *b);
+int		rr(t_list *a, t_list *b);
+int 	revrotate(t_list *stack);
+int 	rra(t_list *a);
+int 	rrb(t_list *b);
+int 	rrr(t_list *a, t_list *b);
+
 
 // * utils
 void	err_msg();
 int		isNum(char *nb);
 int		isDup(int tmp, char **av, int i);
 
-// * added utils
-size_t		ft_strlcpy(char *dst, const char *src, size_t len);
-t_list		*ft_lstnew(int value);
-void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_putendl_fd(char *s, int fd);
-size_t		ft_strlen(const char *s);
-int			ft_isdigit(int c);
-long		ft_atoi(const char *str);
-int			check(unsigned int nb, int mult);
-char		**ft_split(char const *s, char c);
-char		**ft_splitalloc(char **str, char *s, char c);
-int			ft_wordlen(char *str, char c);
-int			ft_countwords(char const *s, char dl);
+// * libft utils
+size_t	ft_strlcpy(char *dst, const char *src, size_t len);
+t_list	*ft_lstnew(int value);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_putendl_fd(char *s, int fd);
+size_t	ft_strlen(const char *s);
+int		ft_isdigit(int c);
+long	ft_atoi(const char *str);
+int		check(unsigned int nb, int mult);
+char	**ft_split(char const *s, char c);
+char	**ft_splitalloc(char **str, char *s, char c);
+int		ft_wordlen(char *str, char c);
+int		ft_countwords(char const *s, char dl);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif

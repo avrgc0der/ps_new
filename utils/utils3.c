@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:15:14 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 18:40:40 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 01:09:43 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,29 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t len)
 	}
 	dst[i] = '\0';
 	return (ft_strlen(src));
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }
