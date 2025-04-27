@@ -6,34 +6,18 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 18:44:14 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:07:03 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int isNum(char *nb)
-{
-	int i;
-	
-	i = 0;
-	if (nb[0] == '-')
-	i++;
-	while (nb[i])
-	{
-		if (!ft_isdigit(nb[i]))
-		return (0);
-		i++;
-	}
-	return (1);
-}
 
 int isDup(int tmp, char **av, int i)
 {
 	i++;
 	while (av[i])
 	{
-		if (ft_atoi(av[i])  == tmp)
+		if (ft_atoi(av[i]) == tmp)
 		return (1);
 		i++;
 	}
@@ -139,9 +123,12 @@ void check_digits(t_parsing *parsing)
 	}
 }
 
+// * skips sign, checks if anything after sign, checks if not num
+
 void args_check(int ac, char **av, t_parsing *parsing)
 {
 	int	i;
+	long tmp;
 
 	i = 1;
 
@@ -164,10 +151,16 @@ void args_check(int ac, char **av, t_parsing *parsing)
 	i = 0;
 	while (parsing->args[i])
 	{
-		printf("%s\n", parsing->args[i]);
+		tmp = ft_atoi(parsing->args[i]);
+		if (!ft_atoi(parsing->args[i]))
+			err_msg();
+		if (isDup(tmp, parsing->args, i))
+			err_msg();
+		if (tmp < INT_MIN || tmp > INT_MAX)
+			err_msg();
+		printf("%ld\n", tmp);
 		i++;
 	}
-
 	// checks if args are all digits
 	check_digits(parsing);
 }

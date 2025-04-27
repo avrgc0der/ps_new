@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:08:46 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 18:38:07 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/27 23:33:15 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,11 @@
 # define EF EXIT_FAILURE
 # define ES EXIT_SUCCESS
 
-// included limits.h instead
-// # define INT_MIN -2147483648
-// # define INT_MAX 2147483647
-
-
 // * list struct
 typedef struct s_list
 {
 	int				value;
 	int				index;
-	// not needed
-	// void			*content;
 	struct s_list	*next;
 }					t_list;
 

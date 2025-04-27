@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 01:04:16 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 18:42:14 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/27 23:33:34 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,16 @@ int main(int ac, char **av)
 	t_list		*b;
 	(void)a;
 	(void)b;
-	// t_list **a;
-	// t_list **b;
 
 	if (ac < 2)
 	{
 		err_msg();
-		// err_msg function has an "exit"
-		// return (-1);
 	}
 	
 	args_check(ac, av, &args);
 
-	// make it to be one pointer
-	// a = (t_list **)malloc(sizeof(t_list));
-	// b = (t_list **)malloc(sizeof(t_list));
-	// a = (t_list *)malloc(sizeof(t_list));
-	// b = (t_list *)malloc(sizeof(t_list));
+	a = (t_list *)malloc(sizeof(t_list));
+	b = (t_list *)malloc(sizeof(t_list));
 	// *a = NULL;
 	// *b = NULL;
 	a = NULL;

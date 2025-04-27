@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:12:28 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 18:37:54 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:04:38 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ long	ft_atoi(const char *str)
 			sign = -1;
 		while (str[i] >= '0' && str[i] <= '9')
 		{
+			if (res > (INT_MAX - (str[i] - '0')) / 10)
+				return (0);
 			res = res * 10 + (str[i++] - '0');
 		}
 		return (check(res, sign));
