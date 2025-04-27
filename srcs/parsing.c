@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 00:07:03 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:19:25 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,47 +149,18 @@ void args_check(int ac, char **av, t_parsing *parsing)
 
 	// prints dem for reference
 	i = 0;
+	check_digits(parsing);
 	while (parsing->args[i])
 	{
 		tmp = ft_atoi(parsing->args[i]);
 		if (!ft_atoi(parsing->args[i]))
-			err_msg();
+		err_msg();
 		if (isDup(tmp, parsing->args, i))
-			err_msg();
+		err_msg();
 		if (tmp < INT_MIN || tmp > INT_MAX)
-			err_msg();
+		err_msg();
 		printf("%ld\n", tmp);
 		i++;
 	}
 	// checks if args are all digits
-	check_digits(parsing);
 }
-
-// void args_check(int ac, char **av)
-// {
-// 	int i;
-// 	long tmp;
-// 	char **args;
-	
-// 	i = 0;
-// 	if (ac == 2)
-// 		args = ft_split(av[1], ' ');
-// 	else
-// 	{
-// 		i = 1;
-// 		args = av + 1;
-// 	}
-// 	while (args[i])
-// 	{
-// 		tmp = ft_atoi(args[i]);
-// 		if (!isNum(args[i]))
-// 		err_msg();
-// 		if (isDup(tmp, args, i))
-// 		err_msg();
-// 		if (tmp < INT_MIN || tmp > INT_MAX)
-// 		err_msg();
-// 		i++;
-// 	}
-// 	if (ac == 2)
-// 	ft_freearray(args);
-// }

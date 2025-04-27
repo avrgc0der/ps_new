@@ -6,11 +6,19 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:22:38 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 15:22:52 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:14:25 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// void sort_stack(t_list *a, t_list *b)
+// {
+// 	if (lst_size(a) <= 5)
+// 		simple_sort(a, b);
+// 	else
+// 		radix_sort(a, b);
+// }
 
 void stack_index(t_list **stack)
 {

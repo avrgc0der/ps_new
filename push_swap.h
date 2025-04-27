@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:08:46 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/27 23:33:15 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 00:16:36 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_list
 
 typedef struct s_parsing
 {
-	char	*joined;
-	char	**args;
-	int		counter;
+	char	*joined; // * after strjoin
+	char	**args; // * all of the args splitted
+	int		counter; // * counter of the elements in the string
 }				t_parsing;
 
 
@@ -58,6 +58,7 @@ void	ft_freearray(char **str);
 // * stack functions
 void	stack_index(t_list **stack);
 t_list	*stack_min(t_list **stack);
+void	sort_stack(t_list *a, t_list *b);
 
 // * utils
 void	err_msg();
