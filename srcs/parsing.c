@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 00:02:31 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 01:32:43 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,38 +46,21 @@ void	new_strjoin(char **av, t_parsing *parsing)
 	int	i;
 	int	j;
 
-	i = 1;
-	j = 0;
+	i = 0;
 	parsing->counter = 0;
-	while (av[i])
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			parsing->counter++;
-			j++;
-		}
-		parsing->counter++;
-		i++;
-	}
+	while (av[++i])
+		parsing->counter += ft_strlen(av[i]) + 1;
 	parsing->joined = malloc(parsing->counter + 1);
-	i = 1;
-	j = 0;
+	i = 0;
 	parsing->counter = 0;
-	while (av[i])
+	while (av[++i])
 	{
-		j = 0;
-		while (av[i][j])
-		{
-			parsing->joined[parsing->counter] = av[i][j];
-			j++;
-			parsing->counter++;
-		}
-		parsing->joined[parsing->counter] = ' ';
-		parsing->counter++;
-		i++;
+		j = -1;
+		while (av[i][++j])
+			parsing->joined[parsing->counter++] = av[i][j];
+		parsing->joined[parsing->counter++] = ' ';
 	}
-	parsing->joined[parsing->counter] = '\0';
+	parsing->joined[--parsing->counter] = '\0';
 }
 
 void	check_digits(t_parsing *parsing)

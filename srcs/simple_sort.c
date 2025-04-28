@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 00:23:35 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 00:04:26 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:54:40 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,36 @@ void	sort_4(t_list *a, t_list *b)
 		rra(a);
 	if (stack_sorted(a))
 		return ;
+	pb(a, b);
+	sort_3(a);
+	pa(a, b);
 }
 
-void	sort_5(t_list *a, t_list *b);
+void	sort_5(t_list *a, t_list *b)
+{
+	int	distance;
+
+	distance = distance_len(a, min_index(a, -1));
+	if (distance == 1)
+		ra(a);
+	else if (distance == 2)
+	{
+		ra(a);
+		ra(a);
+	}
+	else if (distance == 3)
+	{
+		rra(a);
+		rra(a);
+	}
+	else if (distance == 4)
+		rra(a);
+	if (stack_sorted(a))
+		return ;
+	pb(a, b);
+	sort_4(a, b);
+	pa(a, b);
+}
 
 void	simple_sort(t_list *a, t_list *b)
 {

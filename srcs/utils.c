@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:20:03 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 00:07:51 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 01:04:27 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ int	min_index(t_list *stack, int val)
 			min = head->index;
 	}
 	return (min);
+}
+
+void	free_stack(t_list *stack)
+{
+	t_list	*head;
+	t_list	*tmp;
+
+	head = stack;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+	free(stack);
 }

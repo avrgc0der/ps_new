@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:22:38 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 00:05:28 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 01:08:07 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sort_stack(t_list *a, t_list *b)
 	if (lst_size(a) <= 5)
 		simple_sort(a, b);
 	else
-		(void)radix_sort(a, b);
+		radix_sort(a, b);
 }
 
 int	stack_sorted(t_list *stack)

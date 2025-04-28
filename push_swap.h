@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:08:46 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 23:56:06 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 01:27:29 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,14 @@ void	args_check(int ac, char **av, t_parsing *args);
 
 // * cleanup functions
 void	ft_freearray(char **str);
+void	free_stack(t_list *stack);
 
-// * movement functions
+// * sorting functions
+void	sort_3(t_list *a);
+void	sort_4(t_list *a, t_list *b);
+void	sort_5(t_list *a, t_list *b);
+void	simple_sort(t_list *a, t_list *b);
+void	radix_sort(t_list *a, t_list *b);
 
 // * stack functions
 void	stack_index(t_list **stack);
@@ -72,12 +78,16 @@ int		revrotate(t_list *stack);
 int		rra(t_list *a);
 int		rrb(t_list *b);
 int		rrr(t_list *a, t_list *b);
+int		push(t_list *stack_from, t_list *stack_to);
+int		pa(t_list *a, t_list *b);
+int		pb(t_list *a, t_list *b);
 
 // * utils
 void	err_msg(void);
 int		is_dup(int tmp, char **av, int i);
 int		min_index(t_list *stack, int val);
 int		distance_len(t_list *stack, int index);
+int		find_max_bits(t_list *stack);
 
 // * libft utils
 size_t	ft_strlcpy(char *dst, const char *src, size_t len);

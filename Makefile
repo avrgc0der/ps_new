@@ -4,7 +4,7 @@ CFLAGS  = -Wall -Werror -Wextra
 
 RM      = rm -f
 
-SRCS    = srcs/main.c srcs/parsing.c srcs/stack.c srcs/utils.c utils/utils1.c utils/utils2.c utils/utils3.c
+SRCS    =  $(wildcard srcs/*.c srcs/moves/*.c utils/*.c)
 
 OBJ     = $(SRCS:.c=.o)
 
