@@ -14,12 +14,12 @@
 
 int isDup(int tmp, char **av, int i)
 {
-	i++;
-	while (av[i])
+	i--;
+	while (i >= 0)
 	{
 		if (ft_atoi(av[i]) == tmp)
-		return (1);
-		i++;
+			return (1);
+		i--;
 	}
 	return (0);
 }
@@ -153,14 +153,13 @@ void args_check(int ac, char **av, t_parsing *parsing)
 	while (parsing->args[i])
 	{
 		tmp = ft_atoi(parsing->args[i]);
-		if (!ft_atoi(parsing->args[i]))
-		err_msg();
 		if (isDup(tmp, parsing->args, i))
-		err_msg();
-		if (tmp < INT_MIN || tmp > INT_MAX)
-		err_msg();
+			err_msg();
 		printf("%ld\n", tmp);
 		i++;
 	}
+
+	// parsing is done i believe
+	// u need to finish all sortng functions tonight
 	// checks if args are all digits
 }

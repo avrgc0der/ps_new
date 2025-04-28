@@ -15,18 +15,19 @@
 int	check(unsigned int nb, int mult)
 {
 	if (nb > 2147483647 && mult == 1)
-		return (-1);
+		err_msg();
 	else if (nb > 2147483648 && mult == -1)
-		return (0);
+		err_msg();
 	nb *= mult;
 	return (nb);
 }
 
 long	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	sign;
+	int		i;
+	long	res;
+	int		sign;
+	int		temp;
 
 	sign = 1;
 	res = 0;
@@ -39,9 +40,10 @@ long	ft_atoi(const char *str)
 			sign = -1;
 		while (str[i] >= '0' && str[i] <= '9')
 		{
-			if (res > (INT_MAX - (str[i] - '0')) / 10)
-				return (0);
+			temp = res;	
 			res = res * 10 + (str[i++] - '0');
+			if (res < temp)
+				err_msg();
 		}
 		return (check(res, sign));
 	}

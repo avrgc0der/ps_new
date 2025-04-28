@@ -32,7 +32,7 @@ void sort_3(t_list *a)
 		sa(a);
 		rra(a);
 	}
-	else if (top < middle && middle > bottom && top < bottom) // * 132
+	else if (top < middle && middle > bottom && top < bottom) // * 1 3 2
 	{
 		sa(a);
 		ra(a);
