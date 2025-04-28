@@ -6,13 +6,13 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:12:28 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 00:04:38 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:08:04 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check(unsigned int nb, int mult)
+int	check(unsigned long nb, int mult)
 {
 	if (nb > 2147483647 && mult == 1)
 		err_msg();
@@ -27,7 +27,7 @@ long	ft_atoi(const char *str)
 	int		i;
 	long	res;
 	int		sign;
-	int		temp;
+	long	temp;
 
 	sign = 1;
 	res = 0;
@@ -40,7 +40,7 @@ long	ft_atoi(const char *str)
 			sign = -1;
 		while (str[i] >= '0' && str[i] <= '9')
 		{
-			temp = res;	
+			temp = res;
 			res = res * 10 + (str[i++] - '0');
 			if (res < temp)
 				err_msg();

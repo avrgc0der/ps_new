@@ -6,23 +6,23 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:22:38 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 00:29:40 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:05:28 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// void sort_stack(t_list *a, t_list *b)
-// {
-// 	if (lst_size(a) <= 5)
-// 		simple_sort(a, b);
-// 	else
-// 		radix_sort(a, b);
-// }
-
-int stack_sorted(t_list *stack)
+void	sort_stack(t_list *a, t_list *b)
 {
-	t_list *head;
+	if (lst_size(a) <= 5)
+		simple_sort(a, b);
+	else
+		(void)radix_sort(a, b);
+}
+
+int	stack_sorted(t_list *stack)
+{
+	t_list	*head;
 
 	head = stack;
 	while (head && head->next)
@@ -34,13 +34,13 @@ int stack_sorted(t_list *stack)
 	return (1);
 }
 
-void stack_index(t_list **stack)
+void	stack_index(t_list **stack)
 {
-	t_list *head;
-	int i;
-	
+	t_list	*head;
+	int		i;
+
 	i = 0;
-	head = stack_min(stack);	
+	head = stack_min(stack);
 	while (head)
 	{
 		head->index = i++;
@@ -48,12 +48,12 @@ void stack_index(t_list **stack)
 	}
 }
 
-t_list *stack_min(t_list **stack)
+t_list	*stack_min(t_list **stack)
 {
 	t_list	*head;
 	t_list	*min;
 	int		flag;
-	
+
 	min = NULL;
 	flag = 0;
 	head = *stack;

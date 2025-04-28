@@ -6,17 +6,17 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:08:46 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 01:23:29 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/28 23:56:06 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PUSH_SWAP_H 
+#ifndef PUSH_SWAP_H 
 # define PUSH_SWAP_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
 
 # define ERROR "Error"
 
@@ -31,14 +31,12 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-
 typedef struct s_parsing
 {
 	char		*joined; // * after strjoin
 	char		**args; // * all of the args splitted
 	int			counter; // * counter of the elements in the string
 }				t_parsing;
-
 
 // ! -----------------------------------------`
 // ! F U N C T I O N   D E F I N I T I O N S |
@@ -70,16 +68,16 @@ int		rotate(t_list *stack);
 int		ra(t_list *a);
 int		rb(t_list *b);
 int		rr(t_list *a, t_list *b);
-int 	revrotate(t_list *stack);
-int 	rra(t_list *a);
-int 	rrb(t_list *b);
-int 	rrr(t_list *a, t_list *b);
-
+int		revrotate(t_list *stack);
+int		rra(t_list *a);
+int		rrb(t_list *b);
+int		rrr(t_list *a, t_list *b);
 
 // * utils
-void	err_msg();
-int		isNum(char *nb);
-int		isDup(int tmp, char **av, int i);
+void	err_msg(void);
+int		is_dup(int tmp, char **av, int i);
+int		min_index(t_list *stack, int val);
+int		distance_len(t_list *stack, int index);
 
 // * libft utils
 size_t	ft_strlcpy(char *dst, const char *src, size_t len);
@@ -89,7 +87,7 @@ void	ft_putendl_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 long	ft_atoi(const char *str);
-int		check(unsigned int nb, int mult);
+int		check(unsigned long nb, int mult);
 char	**ft_split(char const *s, char c);
 char	**ft_splitalloc(char **str, char *s, char c);
 int		ft_wordlen(char *str, char c);

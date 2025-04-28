@@ -6,25 +6,58 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:20:03 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/25 18:31:41 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:07:51 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	err_msg()
+void	err_msg(void)
 {
 	ft_putendl_fd(ERROR, 2);
 	exit(EF);
 }
 
-void ft_freearray(char **str)
+void	ft_freearray(char **str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 		i++;
 	while (i >= 0)
 		free(str[i--]);
+}
+
+int	distance_len(t_list *stack, int index)
+{
+	t_list	*head;
+	int		distance;
+
+	head = stack;
+	distance = 0;
+	while (head)
+	{
+		if (head->index == index)
+			break ;
+		distance++;
+		head = head->next;
+	}
+	return (distance);
+}
+
+int	min_index(t_list *stack, int val)
+{
+	t_list	*head;
+	int		min;
+
+	head = stack;
+	min = head->index;
+	while (head->next)
+	{
+		head = head->next;
+		if ((head->index < min) && head->index != val)
+			min = head->index;
+	}
+	return (min);
 }

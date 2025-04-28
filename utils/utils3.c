@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:15:14 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 01:09:43 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:08:19 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	tmp->next = new;
 }
 
-
 t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
@@ -42,7 +41,6 @@ t_list	*ft_lstnew(int value)
 	new->next = NULL;
 	return (new);
 }
-
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t len)
 {
