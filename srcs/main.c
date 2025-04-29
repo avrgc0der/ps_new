@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 01:04:16 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 05:18:34 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:43:50 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_stack(t_list **stack, int ac, char **av)
 	}
 	while (args[i])
 	{
-		node = ft_lstnew(ft_atoi(args[i]));
+		node = ft_lstnew(ft_atoi(args[i], NULL));
 		ft_lstadd_back(stack, node);
 		i++;
 	}
@@ -39,13 +39,13 @@ void	init_stack(t_list **stack, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_parsing	parse;
+	t_parsing	parsing;
 	t_list		**a;
 	t_list		**b;
 
 	if (ac < 2)
-		err_msg(NULL);
-	args_check(ac, av, &parse);
+		err_msg(&parsing);
+	args_check(ac, av, &parsing);
 	a = (t_list **)malloc(sizeof(t_list));
 	b = (t_list **)malloc(sizeof(t_list));
 	*a = NULL;
@@ -53,9 +53,9 @@ int	main(int ac, char **av)
 	init_stack(a, ac, av);
 	if (ac > 2)
 	{
-        ft_freearray(parse.args);
-        free(parse.joined);
-    }
+		ft_freearray(parsing.args);
+		free(parsing.joined);
+	}
 	sort_stack(a, b);
 	free_stack(a);
 	free_stack(b);

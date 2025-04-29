@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:08:46 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 04:39:42 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:46:31 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t len);
 void	ft_putendl_fd(char *s, int fd);
-long	ft_atoi(const char *str);
-int		check(unsigned long nb, int mult);
+long	ft_atoi(const char *str, t_parsing *parsing);
+int		check(unsigned long nb, int mult, t_parsing *parsing);
 char	**ft_split(char const *s, char c);
 char	**ft_splitalloc(char **str, char *s, char c);
 int		ft_wordlen(char *str, char c);

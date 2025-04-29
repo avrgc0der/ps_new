@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:20:03 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 05:18:56 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:24:28 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,29 @@
 // 	exit(EF);
 // }
 
-void err_msg(t_parsing *parsing)
+void	err_msg(t_parsing *parsing)
 {
-    if (parsing)
+	if (parsing)
 	{
-        if (parsing->args)
-            ft_freearray(parsing->args);
-        if (parsing->joined)
-            free(parsing->joined);
-    }
-    ft_putendl_fd("Error", 2);
-    exit(1);
+		if (parsing->args)
+			ft_freearray(parsing->args);
+		if (parsing->joined)
+			free(parsing->joined);
+	}
+	ft_putendl_fd("Error", 2);
+	exit(1);
 }
 
-void ft_freearray(char **str)
+void	ft_freearray(char **str)
 {
-    int i = 0;
-    
-    if (!str)
-        return;
-        
-    while (str[i])
-        free(str[i++]);
-    free(str);
+	int	i;
+
+	i = 0;
+	if (!str)
+		return ;
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }
 
 int	distance_len(t_list **stack, int index)

@@ -6,23 +6,23 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:12:28 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 00:08:04 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:34:33 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check(unsigned long nb, int mult)
+int	check(unsigned long nb, int mult, t_parsing *parsing)
 {
 	if (nb > 2147483647 && mult == 1)
-		err_msg();
+		err_msg(parsing);
 	else if (nb > 2147483648 && mult == -1)
-		err_msg();
+		err_msg(parsing);
 	nb *= mult;
 	return (nb);
 }
 
-long	ft_atoi(const char *str)
+long	ft_atoi(const char *str, t_parsing *parsing)
 {
 	int		i;
 	long	res;
@@ -43,9 +43,9 @@ long	ft_atoi(const char *str)
 			temp = res;
 			res = res * 10 + (str[i++] - '0');
 			if (res < temp)
-				err_msg();
+				err_msg(parsing);
 		}
-		return (check(res, sign));
+		return (check(res, sign, parsing));
 	}
 	return (0);
 }

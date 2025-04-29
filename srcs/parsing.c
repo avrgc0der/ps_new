@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 04:28:34 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:46:56 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_dup(int tmp, char **av, int i)
 	i--;
 	while (i >= 0)
 	{
-		if (ft_atoi(av[i]) == tmp)
+		if (ft_atoi(av[i], NULL) == tmp)
 			return (1);
 		i--;
 	}
@@ -103,16 +103,18 @@ void	args_check(int ac, char **av, t_parsing *parsing)
 	check_digits(parsing);
 	while (parsing->args[i])
 	{
-		tmp = ft_atoi(parsing->args[i]);
+		tmp = ft_atoi(parsing->args[i], parsing);
+		if (tmp < INT_MIN || tmp > INT_MAX)
+			err_msg(parsing);
 		if (is_dup(tmp, parsing->args, i))
 			err_msg(parsing);
 		i++;
 	}
-	if (ac == 2) 
+	if (ac == 2)
 	{
-        ft_freearray(parsing->args);
-        free(parsing->joined);
-        parsing->args = NULL;
-        parsing->joined = NULL;
+		ft_freearray(parsing->args);
+		free(parsing->joined);
+		parsing->args = NULL;
+		parsing->joined = NULL;
 	}
 }

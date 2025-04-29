@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 23:50:10 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 04:27:02 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:23:16 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	swap(t_list **stack)
 	head = *stack;
 	next = head->next;
 	if (!head || !next)
-		err_msg();
+		err_msg(NULL);
 	tmp_val = head->value;
 	tmp_i = head->index;
 	head->value = next->value;
