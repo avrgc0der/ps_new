@@ -85,3 +85,15 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_splitalloc(strs, (char *)s, c));
 }
+
+int	is_dup(int tmp, char **av, int i)
+{
+	i--;
+	while (i >= 0)
+	{
+		if (ft_atoi(av[i], NULL) == tmp)
+			return (1);
+		i--;
+	}
+	return (0);
+}

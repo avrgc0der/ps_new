@@ -12,6 +12,13 @@
 
 #include "../push_swap.h"
 
+static void	rsrr(t_list **a)
+{
+	ra(a);
+	sa(a);
+	rra(a);
+}
+
 void	sort_3(t_list **a)
 {
 	t_list	*head;
@@ -24,11 +31,7 @@ void	sort_3(t_list **a)
 	if (stack_sorted(a))
 		return ;
 	if (head->index == min && head->next->index != next_min)
-	{
-		ra(a);
-		sa(a);
-		rra(a);
-	}
+		rsrr(a);
 	else if (head->index == next_min)
 	{
 		if (head->next->index == min)

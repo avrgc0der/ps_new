@@ -43,10 +43,11 @@ typedef struct s_parsing
 // ! ----------------------------------------`
 
 // * init functions
-void	init_stack(t_list **stack, int ac, char **av);
+void	init_stack(t_list **stack, t_parsing *parsing);
 
 // * parsing functions
 void	args_check(int ac, char **av, t_parsing *args);
+int		is_dup(int tmp, char **av, int i);
 
 // * cleanup functions
 void	ft_freearray(char **str);

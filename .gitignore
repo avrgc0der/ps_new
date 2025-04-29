@@ -1,0 +1,4 @@
+*.o
+checker_linux
+push_swap
+*/*.o

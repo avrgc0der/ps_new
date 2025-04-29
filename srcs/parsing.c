@@ -12,18 +12,6 @@
 
 #include "../push_swap.h"
 
-int	is_dup(int tmp, char **av, int i)
-{
-	i--;
-	while (i >= 0)
-	{
-		if (ft_atoi(av[i], NULL) == tmp)
-			return (1);
-		i--;
-	}
-	return (0);
-}
-
 int	check_spaces(char *str)
 {
 	int	i;
@@ -85,10 +73,26 @@ void	check_digits(t_parsing *parsing)
 	}
 }
 
+static void	number_check(t_parsing *parsing)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	while (parsing->args[i])
+	{
+		tmp = ft_atoi(parsing->args[i], parsing);
+		if (tmp < INT_MIN || tmp > INT_MAX)
+			err_msg(parsing);
+		if (is_dup(tmp, parsing->args, i))
+			err_msg(parsing);
+		i++;
+	}
+}
+
 void	args_check(int ac, char **av, t_parsing *parsing)
 {
 	int		i;
-	long	tmp;
 
 	i = 1;
 	while (i < ac)
@@ -99,17 +103,15 @@ void	args_check(int ac, char **av, t_parsing *parsing)
 	}
 	new_strjoin(av, parsing);
 	parsing->args = ft_split(parsing->joined, ' ');
+	// int j = 0;
+	// while (parsing->args[j])
+	// {
+	// 	printf("%s\n", parsing->args[j]);
+	// 	j++;
+	// }
 	i = 0;
 	check_digits(parsing);
-	while (parsing->args[i])
-	{
-		tmp = ft_atoi(parsing->args[i], parsing);
-		if (tmp < INT_MIN || tmp > INT_MAX)
-			err_msg(parsing);
-		if (is_dup(tmp, parsing->args, i))
-			err_msg(parsing);
-		i++;
-	}
+	number_check(parsing);
 	if (ac == 2)
 	{
 		ft_freearray(parsing->args);

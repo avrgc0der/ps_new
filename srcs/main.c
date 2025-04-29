@@ -12,29 +12,19 @@
 
 #include "../push_swap.h"
 
-void	init_stack(t_list **stack, int ac, char **av)
+void	init_stack(t_list **stack, t_parsing *parsing)
 {
-	char	**args;
 	t_list	*node;
 	int		i;
 
 	i = 0;
-	if (ac == 2)
-		args = ft_split(av[1], ' ');
-	else
+	while (parsing->args[i])
 	{
-		i = 1;
-		args = av;
-	}
-	while (args[i])
-	{
-		node = ft_lstnew(ft_atoi(args[i], NULL));
+		node = ft_lstnew(ft_atoi(parsing->args[i], NULL));
 		ft_lstadd_back(stack, node);
 		i++;
 	}
 	stack_index(stack);
-	if (ac == 2)
-		ft_freearray(args);
 }
 
 int	main(int ac, char **av)
@@ -43,14 +33,16 @@ int	main(int ac, char **av)
 	t_list		**a;
 	t_list		**b;
 
+	parsing.args = NULL;
+	parsing.joined = NULL;
 	if (ac < 2)
-		err_msg(&parsing);
+		return (0);
 	args_check(ac, av, &parsing);
 	a = (t_list **)malloc(sizeof(t_list));
 	b = (t_list **)malloc(sizeof(t_list));
 	*a = NULL;
 	*b = NULL;
-	init_stack(a, ac, av);
+	init_stack(a, &parsing);
 	if (ac > 2)
 	{
 		ft_freearray(parsing.args);
