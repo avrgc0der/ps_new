@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_revrotate.c                                  :+:      :+:    :+:   */
+/*   revrotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 00:41:30 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/28 23:52:08 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 04:26:32 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../push_swap.h"
 
-int	revrotate(t_list *stack)
+int	revrotate(t_list **stack)
 {
 	t_list	*top;
 	t_list	*bottom;
 
-	if (ft_lstsize(stack) < 2)
+	if (ft_lstsize(*stack) < 2)
 		return (-1);
-	top = stack;
+	top = *stack;
 	bottom = ft_lstlast(top);
 	while (top)
 	{
@@ -30,12 +30,12 @@ int	revrotate(t_list *stack)
 		}
 		top = top->next;
 	}
-	bottom->next = stack;
-	stack = bottom;
+	bottom->next = *stack;
+	*stack = bottom;
 	return (0);
 }
 
-int	rra(t_list *a)
+int	rra(t_list **a)
 {
 	if (revrotate(a) == -1)
 		return (-1);
@@ -43,7 +43,7 @@ int	rra(t_list *a)
 	return (0);
 }
 
-int	rrb(t_list *b)
+int	rrb(t_list **b)
 {
 	if (revrotate(b) == -1)
 		return (-1);
@@ -51,9 +51,9 @@ int	rrb(t_list *b)
 	return (0);
 }
 
-int	rrr(t_list *a, t_list *b)
+int	rrr(t_list **a, t_list **b)
 {
-	if ((ft_lstsize(a) < 2) || (ft_lstsize(b) < 2))
+	if ((ft_lstsize(*a) < 2) || (ft_lstsize(*b) < 2))
 		return (-1);
 	revrotate(a);
 	revrotate(b);

@@ -6,48 +6,52 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 00:23:35 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 00:54:40 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 05:27:47 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	sort_3(t_list *a)
+void	sort_3(t_list **a)
 {
-	int	top;
-	int	middle;
-	int	bottom;
+	t_list	*head;
+	int		min;
+	int		next_min;
 
-	top = a->index;
-	middle = a->next->index;
-	bottom = a->next->next->index;
+	head = *a;
+	min = find_min(a, -1);
+	next_min = find_min(a, min);
 	if (stack_sorted(a))
 		return ;
-	if (top > middle && middle < bottom && top < bottom)
-		sa(a);
-	else if (top > middle && middle < bottom && top > bottom)
+	if (head->index == min && head->next->index != next_min)
+	{
 		ra(a);
-	else if (top > middle && middle > bottom && top > bottom)
+		sa(a);
+		rra(a);
+	}
+	else if (head->index == next_min)
+	{
+		if (head->next->index == min)
+			sa(a);
+		else
+			rra(a);
+	}
+	else if (head->next->index == min)
+		ra(a);
+	else
 	{
 		sa(a);
 		rra(a);
 	}
-	else if (top < middle && middle > bottom && top < bottom)
-	{
-		sa(a);
-		ra(a);
-	}
-	else if (top < middle && middle > bottom && top > bottom)
-		rra(a);
 }
 
-void	sort_4(t_list *a, t_list *b)
+void	sort_4(t_list **a, t_list **b)
 {
 	int	distance;
 
 	if (stack_sorted(a))
 		return ;
-	distance = distance_len(a, min_index(a, -1));
+	distance = distance_len(a, find_min(a, -1));
 	if (distance == 1)
 		ra(a);
 	else if (distance == 2)
@@ -64,11 +68,11 @@ void	sort_4(t_list *a, t_list *b)
 	pa(a, b);
 }
 
-void	sort_5(t_list *a, t_list *b)
+void	sort_5(t_list **a, t_list **b)
 {
 	int	distance;
 
-	distance = distance_len(a, min_index(a, -1));
+	distance = distance_len(a, find_min(a, -1));
 	if (distance == 1)
 		ra(a);
 	else if (distance == 2)
@@ -90,13 +94,14 @@ void	sort_5(t_list *a, t_list *b)
 	pa(a, b);
 }
 
-void	simple_sort(t_list *a, t_list *b)
+void	simple_sort(t_list **a, t_list **b)
 {
 	int	i;
 
-	if (stack_sorted(a) || ft_lstsize(a) <= 1)
+	if (stack_sorted(a) || ft_lstsize(*a) == 0
+		|| ft_lstsize(*a) == 1)
 		return ;
-	i = ft_lstsize(a);
+	i = ft_lstsize(*a);
 	if (i == 2)
 		sa(a);
 	else if (i == 3)

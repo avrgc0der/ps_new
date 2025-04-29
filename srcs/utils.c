@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:20:03 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 01:04:27 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 05:18:56 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	ft_freearray(char **str)
 		free(str[i--]);
 }
 
-int	distance_len(t_list *stack, int index)
+int	distance_len(t_list **stack, int index)
 {
 	t_list	*head;
 	int		distance;
 
-	head = stack;
 	distance = 0;
+	head = *stack;
 	while (head)
 	{
 		if (head->index == index)
@@ -46,12 +46,27 @@ int	distance_len(t_list *stack, int index)
 	return (distance);
 }
 
-int	min_index(t_list *stack, int val)
+void	free_stack(t_list **stack)
+{
+	t_list	*head;
+	t_list	*tmp;
+
+	head = *stack;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+	free(stack);
+}
+
+int	find_min(t_list **stack, int val)
 {
 	t_list	*head;
 	int		min;
 
-	head = stack;
+	head = *stack;
 	min = head->index;
 	while (head->next)
 	{
@@ -60,19 +75,4 @@ int	min_index(t_list *stack, int val)
 			min = head->index;
 	}
 	return (min);
-}
-
-void	free_stack(t_list *stack)
-{
-	t_list	*head;
-	t_list	*tmp;
-
-	head = stack;
-	while (head)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-	free(stack);
 }

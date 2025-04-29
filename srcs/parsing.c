@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 01:32:43 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 04:28:34 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	is_dup(int tmp, char **av, int i)
 	return (0);
 }
 
-// function to check if args are empty
 int	check_spaces(char *str)
 {
 	int	i;
@@ -86,8 +85,6 @@ void	check_digits(t_parsing *parsing)
 	}
 }
 
-// * skips sign, checks if anything after sign, checks if not num
-
 void	args_check(int ac, char **av, t_parsing *parsing)
 {
 	int		i;
@@ -109,7 +106,6 @@ void	args_check(int ac, char **av, t_parsing *parsing)
 		tmp = ft_atoi(parsing->args[i]);
 		if (is_dup(tmp, parsing->args, i))
 			err_msg();
-		printf("%ld\n", tmp);
 		i++;
 	}
 }
