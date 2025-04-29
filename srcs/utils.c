@@ -12,21 +12,35 @@
 
 #include "../push_swap.h"
 
-void	err_msg(void)
+// void	err_msg(void)
+// {
+// 	ft_putendl_fd(ERROR, 2);
+// 	exit(EF);
+// }
+
+void err_msg(t_parsing *parsing)
 {
-	ft_putendl_fd(ERROR, 2);
-	exit(EF);
+    if (parsing)
+	{
+        if (parsing->args)
+            ft_freearray(parsing->args);
+        if (parsing->joined)
+            free(parsing->joined);
+    }
+    ft_putendl_fd("Error", 2);
+    exit(1);
 }
 
-void	ft_freearray(char **str)
+void ft_freearray(char **str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+    int i = 0;
+    
+    if (!str)
+        return;
+        
+    while (str[i])
+        free(str[i++]);
+    free(str);
 }
 
 int	distance_len(t_list **stack, int index)

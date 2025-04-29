@@ -83,7 +83,8 @@ int		pa(t_list **a, t_list **b);
 int		pb(t_list **a, t_list **b);
 
 // * utils
-void	err_msg(void);
+// void	err_msg(void);
+void	err_msg(t_parsing *parsing);
 int		is_dup(int tmp, char **av, int i);
 int		distance_len(t_list **stack, int index);
 int		find_max_bits(t_list **stack);

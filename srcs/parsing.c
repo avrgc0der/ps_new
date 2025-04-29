@@ -74,11 +74,11 @@ void	check_digits(t_parsing *parsing)
 		if ((parsing->args[i][j] == '-') || (parsing->args[i][j] == '+'))
 			j++;
 		if (!parsing->args[i][j])
-			err_msg();
+			err_msg(parsing);
 		while (parsing->args[i][j])
 		{
 			if (!(parsing->args[i][j] >= '0' && parsing->args[i][j] <= '9'))
-				err_msg();
+				err_msg(parsing);
 			j++;
 		}
 		i++;
@@ -94,7 +94,7 @@ void	args_check(int ac, char **av, t_parsing *parsing)
 	while (i < ac)
 	{
 		if (check_spaces(av[i]) == 0)
-			err_msg();
+			err_msg(parsing);
 		i++;
 	}
 	new_strjoin(av, parsing);
@@ -105,7 +105,14 @@ void	args_check(int ac, char **av, t_parsing *parsing)
 	{
 		tmp = ft_atoi(parsing->args[i]);
 		if (is_dup(tmp, parsing->args, i))
-			err_msg();
+			err_msg(parsing);
 		i++;
+	}
+	if (ac == 2) 
+	{
+        ft_freearray(parsing->args);
+        free(parsing->joined);
+        parsing->args = NULL;
+        parsing->joined = NULL;
 	}
 }

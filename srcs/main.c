@@ -39,24 +39,23 @@ void	init_stack(t_list **stack, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_parsing	args;
+	t_parsing	parse;
 	t_list		**a;
 	t_list		**b;
 
 	if (ac < 2)
-		err_msg();
-	args_check(ac, av, &args);
+		err_msg(NULL);
+	args_check(ac, av, &parse);
 	a = (t_list **)malloc(sizeof(t_list));
 	b = (t_list **)malloc(sizeof(t_list));
 	*a = NULL;
 	*b = NULL;
 	init_stack(a, ac, av);
-	if (stack_sorted(a))
+	if (ac > 2)
 	{
-		free_stack(a);
-		free_stack(b);
-		return (0);
-	}
+        ft_freearray(parse.args);
+        free(parse.joined);
+    }
 	sort_stack(a, b);
 	free_stack(a);
 	free_stack(b);

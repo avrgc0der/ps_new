@@ -39,11 +39,25 @@ int	push(t_list **stack_from, t_list **stack_to)
 	return (0);
 }
 
-int	pa(t_list **a, t_list **b)
+// int	pa(t_list **a, t_list **b)
+// {
+// 	if (push(a, b) == -1)
+// 		return (-1);
+// 	ft_putendl_fd("pa", 1);
+// 	return (0);
+// }
+
+int pa(t_list **a, t_list **b)
 {
-	if (push(a, b) == -1)
+    t_list *first_b;
+    
+    if (!*b)
 		return (-1);
-	ft_putendl_fd("pa", 1);
+    first_b = *b;
+    *b = (*b)->next;
+    first_b->next = *a;
+    *a = first_b;
+    write(1, "pa\n", 3);
 	return (0);
 }
 
@@ -54,3 +68,17 @@ int	pb(t_list **a, t_list **b)
 	ft_putendl_fd("pb", 1);
 	return (0);
 }
+
+// int pb(t_list **a, t_list **b)
+// {
+//     t_list *first_b;
+    
+//     if (!*b)
+// 		return (-1);
+//     first_b = *b;
+//     *b = (*b)->next;
+//     first_b->next = *a;
+//     *a = first_b;
+//     write(1, "pb\n", 3);
+// 	return (0);
+// }
