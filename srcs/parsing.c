@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:21:36 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/04/29 08:46:56 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:19:55 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,6 @@ void	args_check(int ac, char **av, t_parsing *parsing)
 	}
 	new_strjoin(av, parsing);
 	parsing->args = ft_split(parsing->joined, ' ');
-	// int j = 0;
-	// while (parsing->args[j])
-	// {
-	// 	printf("%s\n", parsing->args[j]);
-	// 	j++;
-	// }
 	i = 0;
 	check_digits(parsing);
 	number_check(parsing);
